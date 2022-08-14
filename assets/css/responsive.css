@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+/*
+Theme Name: RB Blog Two
+Theme URI: https://github.com/BashirRased/wp-theme-rb-blog-two
+Author: Bashir Rased
+Author URI: https://profiles.wordpress.org/bashirrased2017/
+Description: RB Blog Two is your  personal blog website.
+Requires at least: 5.3
+Tested up to: 6.0
+Requires PHP: 5.6
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: rb-blog-two
+Tags: one-column, custom-menu, custom-logo, featured-images, sticky-post, threaded-comments, translation-ready
+
+RB Blog Two WordPress Theme, (C) 2022 Bashir Rased.
+RB Blog Two is distributed under the terms of the GNU GPL.
+*/
+
+@media all and (max-width: 991px) {
+
+    .current-time-display,
+    .current-date-display {
+        text-align: center;
+        margin: 5px 0;
+    }
+	.current-date-display {
+        float: none;
+    }
+
+    .site-branding-inner,
+    .site-logo,
+    .site-branding {
+        display: block;
+        text-align: center;
+    }
+    .site-logo {
+        margin-left: 0;
+    }
+
+    .header-menu li {
+        float: none;
+        display: block;        
+    }
+
+    .header-menu li a { 
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .header-menu li a i {
+        display: none;
+    }
+
+    .header-menu-dropdown,
+    .header-menu-multi-dropdown {
+        position: static;
+        display: none;
+    }
+
+    .dropdown-menu-btn {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 45px;
+        height: 45px;
+        border: none;
+        background-color: #fff;
+    }
+
+    .dropdown-menu-btn:hover,
+    .dropdown-menu-btn:focus {
+        color: #fff;
+        border: 1px solid #fff;
+    }
+
+    .dropdown-menu-open {
+        display: block;
+    }
+
+    .header-menu-dropdown a {
+        border-top: none;
+    }
+
+    .header-menu-multi-dropdown a {
+        border-left: none;
+    }
+
+    .breadcrumbs-nav ul li {
+        display: block;
+        margin-left: 0;
+    }
+
+    .copyright-text,
+    .powered-by-text {
+        margin: 5px;
+        text-align: center;
+    }
+
+    .powered-by-text {
+        float: none;
+    }
+
+}
