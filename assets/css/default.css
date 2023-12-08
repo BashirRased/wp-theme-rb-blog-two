@@ -2,7 +2,7 @@
 Theme Name: RB Blog Two
 Theme URI: https://bashirrased.com/theme/rb-blog-two/
 Text Domain: rb-blog-two
-Version: 1.0.1
+Version: 1.0.2
 Requires at least: 6.1
 Tested up to: 6.2
 Requires PHP: 5.6
@@ -61,7 +61,6 @@ Table of CSS Content End Here
 
 body {
 	position: relative;
-	word-break: break-all;
 	scroll-behavior: smooth;
 	outline: 0;
 	font-family: var(--body-font);
@@ -397,23 +396,20 @@ a img.aligncenter {
 }
 
 /* Skip Link --------------------------------- */
-.skip-link,
-.logged-in .screen-reader-shortcut {
+.skip-link {
 	left: -9999rem;
 	top: 2.5rem;
 	z-index: 999999999;
 	text-decoration: none;
 }
 
-.skip-link:focus,
-.logged-in .screen-reader-shortcut:focus {
+.skip-link:focus {
 	display: block;
 	left: 6px;
 	top: 7px;
 	font-size: 16px;
 	font-weight: var(--heading-font-weight);	
 }
-
 /*=========================================
 ===== 05. WordPress Core CSS End Here =====
 =========================================*/
@@ -1062,7 +1058,6 @@ ol.wp-block-latest-comments,
     top: 0;
     bottom: 0;
     z-index: 999999;
-    clear: none;
 }
 /*========================================= 
 ===== 08. Preloader CSS Area End Here =====
@@ -1135,7 +1130,83 @@ ol.wp-block-latest-comments,
 /*============================================= 
 ===== 11. Header Menu CSS Area Start Here =====
 =============================================*/
+.header-menu-area .dropdown-toggle::after {
+    display: none;
+}
 
+.header-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header-menu li {
+    float: left;
+    position: relative;
+}
+
+.header-menu a {
+    display: block;
+    text-decoration: none;
+}
+
+.header-menu .menu-item-has-children > a,
+.header-menu .menu-item-has-children > a.submenu-item-link {
+    position: relative;
+}
+
+.header-menu .menu-item-has-children > a::after {
+    content: '\f107';   
+    font-family: "FontAwesome";
+    position: absolute;
+    margin-left: 5px;
+    transition: var(--transition);
+}
+
+.header-menu .menu-item-has-children > a:hover::after,
+.header-menu .menu-item-has-children > a:focus::after {
+    content: '\f106'; 
+}
+
+.header-menu .menu-item-has-children > a.submenu-item-link::after {
+    content: '\f105'; 
+}
+
+.header-menu .menu-item-has-children > a.submenu-item-link:hover::after,
+.header-menu .menu-item-has-children > a.submenu-item-link:focus::after {
+    content: '\f104'; 
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: -999999px;
+    min-width: 250px;
+    z-index: 999999;
+    padding: 0;
+}
+
+.header-menu li:hover > .submenu,
+.header-menu li:focus-within > .submenu {
+    left: 0;
+}
+
+.submenu li {
+    position: relative;
+    float: none;
+    list-style: none;
+}
+
+.submenu .submenu {
+    position: absolute;
+    top: -99999px;
+}
+
+.submenu li:hover > .submenu,
+.submenu li:focus-within > .submenu {
+    top: 0;
+    left: 100%;
+}
 /*=========================================== 
 ===== 11. Header Menu CSS Area End Here =====
 ===========================================*/
@@ -1165,6 +1236,7 @@ ol.wp-block-latest-comments,
 	position: relative;
 	color: var(--white-color);
 	z-index: 2;
+	word-break: break-all;
 }
 
 .breadcrumbs-right-area {

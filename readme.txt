@@ -3,7 +3,7 @@ Contributors: bashirrased
 Requires at least: 6.1
 Tested up to: 6.2
 Requires PHP: 5.6
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Author URI: https://bashirrased.com/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -91,8 +91,15 @@ RB Blog Two is distributed under the terms of the GNU GPL.
 
 == Changelog ==
 
+= 1.0.2 - June 30, 2023 =
+* 2nd Updated.
+* default.css
+* style.css
+* image.php
+* content-single.php
+
 = 1.0.1 - June 28, 2023 =
-* 1st Upgrade.
+* 1st Updated full theme.
 
 = 1.0.0 - August 22, 2022 =
 * Initial 1st Publish Version.

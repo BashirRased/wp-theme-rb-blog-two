@@ -2,7 +2,7 @@
 Theme Name: RB Blog Two
 Theme URI: https://bashirrased.com/theme/rb-blog-two/
 Text Domain: rb-blog-two
-Version: 1.0.1
+Version: 1.0.2
 Requires at least: 6.1
 Tested up to: 6.2
 Requires PHP: 5.6
@@ -228,16 +228,14 @@ button:focus {
 ===== 05. WordPress Core CSS Start Here =====
 ===========================================*/
 /* Skip Link --------------------------------- */
-.skip-link,
-.logged-in .screen-reader-shortcut {
+.skip-link {
 	padding: 10px 30px;
 	color: var(--primary-color);
 	border: 1px solid var(--primary-color);
 	background-color: transparent;
 }
 
-.skip-link:focus,
-.logged-in .screen-reader-shortcut:focus {
+.skip-link:focus {
 	color: var(--white-color);
     background-color: var(--primary-color);
 }
@@ -469,6 +467,10 @@ input#s[type="text"]:focus {
 /** 10. Social Links Widget */
 
 /** 11. Tag Widget */
+.wp-block-tag-cloud.is-style-outline {
+    gap: 0 5px;
+}
+
 .widget_tag_cloud a,
 .wp-block-tag-cloud a {
 	color: var(--primary-color);
@@ -811,25 +813,8 @@ input#s[type="text"]:focus {
     background-color: var(--primary-color);
 }
 
-.header-menu-area .dropdown-toggle::after {
-    display: none;
-}
-
-.header-menu {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.header-menu li {
-    float: left;
-    position: relative;
-}
-
 .header-menu a {
     font-size: 16px;
-    display: block;
-    text-decoration: none;
     color: var(--white-color);
     background-color: var(--primary-color);
     padding: 10px 20px;
@@ -837,57 +822,16 @@ input#s[type="text"]:focus {
 
 .header-menu a:hover,
 .header-menu a:focus,
-.header-menu a[aria-current="page"] {
+.header-menu .current-menu-item a {
     color: var(--primary-color);
     background-color: var(--white-color);
 }
 
-.header-menu .menu-item-has-children > a,
-.header-menu .menu-item-has-children > a.submenu-item-link {
-    position: relative;
-}
-
-.header-menu .menu-item-has-children > a::after {
-    content: '\f107';   
-    font-family: "FontAwesome";
-    position: absolute;
-    margin-left: 5px;
-    transition: var(--transition);
-}
-
-.header-menu .menu-item-has-children > a:hover::after,
-.header-menu .menu-item-has-children > a:focus::after {
-    content: '\f106'; 
-}
-
-.header-menu .menu-item-has-children > a.submenu-item-link::after {
-    content: '\f105'; 
-}
-
-.header-menu .menu-item-has-children > a.submenu-item-link:hover::after,
-.header-menu .menu-item-has-children > a.submenu-item-link:focus::after {
-    content: '\f104'; 
-}
-
 .submenu {
-    position: absolute;
-    top: 100%;
-    left: -999999px;
-    min-width: 250px;
     background-color: var(--primary-color);
-    z-index: 999999;
-    padding: 0;
-}
-
-.header-menu li:hover > .submenu,
-.header-menu li:focus-within > .submenu {
-    left: 0;
 }
 
 .submenu li {
-    position: relative;
-    float: none;
-    list-style: none;
     border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
@@ -897,17 +841,6 @@ input#s[type="text"]:focus {
 
 .submenu li a {
     padding: 10px 20px;
-}
-
-.submenu .submenu {
-    position: absolute;
-    top: -99999px;
-}
-
-.submenu li:hover > .submenu,
-.submenu li:focus-within > .submenu {
-    top: 0;
-    left: 100%;
 }
 
 .submenu .submenu li {
@@ -927,7 +860,7 @@ input#s[type="text"]:focus {
 
 .breadcrumbs-title {
     text-transform: capitalize;
-    margin-bottom: 50px;   
+    margin-bottom: 50px;
 }
 /*=========================================== 
 ===== 12. Breadcrumbs CSS Area End Here =====
@@ -943,7 +876,8 @@ input#s[type="text"]:focus {
 .single-post-item {
 	margin: 20px 0;
 	padding: 15px;
-	background-color: var(--light-grey); 
+	background-color: var(--light-grey);    
+	word-break: break-all;
 }
 
 .single-post-item:first-child {
@@ -965,7 +899,7 @@ input#s[type="text"]:focus {
 
 .entry-meta-footer {
     margin-top: 10px;
-    padding: 15px;
+    padding: 25px;
     background-color: var(--light-grey);
 }
 
@@ -1060,15 +994,15 @@ input#s[type="text"]:focus {
 ==================================================*/
 /** 01. Total Comments */
 .total-comments {
-    margin-top: 10px;
-	padding: 15px;
+    margin-top: 20px;
+	padding: 25px;
 	background-color: var(--light-grey);
 }
 
 /** 02. Comments Form */
 .comment-respond {
 	margin-top: 20px;
-    padding: 15px;
+    padding: 25px;
 	background-color: var(--light-grey);
 }
 
@@ -1098,8 +1032,8 @@ input#s[type="text"]:focus {
 
 /** 03. Comments List */
 .comments-box {
-	margin-top: 10px;
-    padding: 15px;
+	margin-top: 20px;
+    padding: 25px;
 	background-color: var(--light-grey);
 }
 
@@ -1148,6 +1082,7 @@ input#s[type="text"]:focus {
 ============================================*/
 .error-page {
     padding: 15px;
+    background-color: var(--light-grey);
 }
 
 .error-page .page-header-title {

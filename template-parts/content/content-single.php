@@ -5,8 +5,8 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package RB Blog Two
- * @version RB Blog Two 1.0.1
- * @since RB Blog Two 1.0.1
+ * @version RB Blog Two 1.0.2
+ * @since RB Blog Two 1.0.2
  */
 ?>
 
@@ -19,9 +19,11 @@
 
                     <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-                    <div class="entry-feature">
-                        <?php do_action ( 'rb_blog_two_post_thumbnail' ); ?>
-                    </div>
+                    <?php if ( has_post_thumbnail() ) : ?>
+                        <div class="entry-feature">
+                            <?php do_action ( 'rb_blog_two_post_thumbnail' ); ?>
+                        </div>
+                    <?php endif; ?>
 
                     <div class="entry-meta">
                         <?php
