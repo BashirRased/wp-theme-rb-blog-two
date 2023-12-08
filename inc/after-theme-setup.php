@@ -6,29 +6,16 @@
  * 
  * The file loading under functions.php
  *
- * @package RB Blog Two
- * @version RB Blog Two 1.0.2
- * @since RB Blog Two 1.0.1
+ * @package rb-blog-two
  */
 
 if ( ! function_exists( 'rb_blog_two_theme_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
-	 *
-	 * @since RB Blog Two 1.0.1
-	 *
-	 * @return void
 	 */
     function rb_blog_two_theme_setup() {        
         /*
 		 * Make theme available for translation.
-		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on Twenty Twenty-One, use a find and replace
-		 * to change 'rb-blog-two' to the name of your theme in all the template files.
 		 */
 		load_theme_textdomain( 'rb-blog-two', get_template_directory(). '/languages' );
 

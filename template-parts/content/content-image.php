@@ -6,6 +6,9 @@
  *
  * @package rb-blog-two
  */
+
+$img_file = "";
+$img_file = get_field( 'rbth_post_img' );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post-item' ); ?>>
@@ -58,10 +61,17 @@
                     <?php endif; ?>
                 </header>
 
-                <?php if ( get_the_content() ) : ?>
-                    <div class="entry-content">
-                        <?php the_content(); ?>
-                    </div>
+                <?php if ( get_the_content() || !empty($img_file) ) : ?>
+                <div class="entry-content">
+                    <?php if( !empty( $img_file ) ): ?>
+                        <figure>
+                            <img src="<?php echo esc_url($img_file['url']); ?>" alt="<?php echo esc_attr($img_file['alt'] , 'rb-blog-two'); ?>" />
+                        </figure>
+                    <?php the_content(); else :
+                        the_content();
+                    endif;
+                    ?>
+                </div>
                 <?php endif; ?>
 
             </div>

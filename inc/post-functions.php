@@ -4,9 +4,7 @@
  * 
  * The template loading under functions.php
  *
- * @package RB Blog Two
- * @version RB Blog Two 1.0.2
- * @since RB Blog Two 1.0.1
+ * @package rb-blog-two
  */
 
 /*=====================================
@@ -31,13 +29,6 @@ Table of Post Functions List End Here
 ***** 01. Post Thumbnail Display Permission Check *****
 ******************************************************/
 function rb_blog_two_can_show_post_thumbnail() {
-	/**
-	 * Filters whether post thumbnail can be displayed.
-	 *
-	 * @since RB Blog Two 1.0.1
-	 *
-	 * @param bool $show_post_thumbnail Whether to show post thumbnail.
-	 */
 	return apply_filters(
 		'rb_blog_two_can_show_post_thumbnail', ! post_password_required() && ! is_attachment() && has_post_thumbnail()
 	);
@@ -47,16 +38,6 @@ function rb_blog_two_can_show_post_thumbnail() {
 ***** 02. Post Thumbnail Display *****
 *************************************/
 if ( !function_exists( 'rb_blog_two_post_thumbnail_cutom' ) ) {
-	/**
-	 * Displays an optional post thumbnail.
-	 *
-	 * Wraps the post thumbnail in an anchor element on index views, or a div
-	 * element when on single views.
-	 *
-	 * @since RB Blog Two 1.0.1
-	 *
-	 * @return void
-	 */
 	function rb_blog_two_post_thumbnail_cutom() {
 		if ( !rb_blog_two_can_show_post_thumbnail() ) {
 			return;
@@ -85,13 +66,6 @@ if ( !function_exists( 'rb_blog_two_post_thumbnail_cutom' ) ) {
 ***** 03. Post Author Meta Output *****
 **************************************/
 if ( !function_exists( 'rb_blog_two_author_meta_custom' ) ) {
-    /**
-	 * Current author.
-	 *
-	 * @since RB Blog Two 1.0.1
-	 *
-	 * @return void
-	 */
 	function rb_blog_two_author_meta_custom() {
 		printf(
 			/* translators: %s: Author name. */
@@ -106,13 +80,6 @@ if ( !function_exists( 'rb_blog_two_author_meta_custom' ) ) {
 ***** 04. Post Date Meta Output *****
 ************************************/
 if ( !function_exists( 'rb_blog_two_date_meta_custom' ) ) {
-    /**
-	 * Current post date.
-	 *
-	 * @since RB Blog Two 1.0.1
-	 *
-	 * @return void
-	 */
 	function rb_blog_two_date_meta_custom() {		
         $archive_year  = get_the_time( 'Y' );
 		$archive_month = get_the_time( 'm' );
@@ -135,13 +102,6 @@ if ( !function_exists( 'rb_blog_two_date_meta_custom' ) ) {
 ***** 05. Post Category Meta Output *****
 ****************************************/
 if ( !function_exists( 'rb_blog_two_cat_meta_custom' ) ) {
-    /**
-	 * Current post categories.
-	 *
-	 * @since RB Blog Two 1.0.1
-	 *
-	 * @return void
-	 */
 	function rb_blog_two_cat_meta_custom() {
         if ( has_category() ) : ?>
         <span class="entry-cat-meta">
@@ -158,13 +118,6 @@ if ( !function_exists( 'rb_blog_two_cat_meta_custom' ) ) {
 ***** 06. Post Tag Meta Output *****
 ***********************************/
 if ( !function_exists( 'rb_blog_two_tag_meta_custom' ) ) {
-    /**
-	 * Prints HTML with meta information for the current tags.
-	 *
-	 * @since RB Blog Two 1.0.1
-	 *
-	 * @return void
-	 */
 	function rb_blog_two_tag_meta_custom() {
 		$tags_list = get_the_tag_list( '', ', ' );
 		if ( has_tag() ) { 
@@ -183,13 +136,6 @@ if ( !function_exists( 'rb_blog_two_tag_meta_custom' ) ) {
 ***** 07. Post Comments Meta Output *****
 ****************************************/
 if ( !function_exists( 'rb_blog_two_comments_meta_custom' ) ) {
-	/**
-	 * Current post comments.
-	 *
-	 * @since RB Blog Two 1.0.1
-	 *
-	 * @return void
-	 */
     function rb_blog_two_comments_meta_custom() {
         ?>
         <span class="entry-comments-meta">
@@ -213,13 +159,6 @@ if ( !function_exists( 'rb_blog_two_comments_meta_custom' ) ) {
 ***** 08. Post Edit Meta Output *****
 ************************************/
 if ( !function_exists( 'rb_blog_two_edit_meta_custom' ) ) {
-    /**
-	 * Current post edit.
-	 *
-	 * @since RB Blog Two 1.0.1
-	 *
-	 * @return void
-	 */
 	function rb_blog_two_edit_meta_custom() {
 		edit_post_link(
 			sprintf(
@@ -236,20 +175,40 @@ if ( !function_exists( 'rb_blog_two_edit_meta_custom' ) ) {
 /**************************************
 ***** 09. Read More Button Output *****
 **************************************/
-if ( !function_exists( 'rb_blog_two_custom_read_btn' ) ) {
-	function rb_blog_two_custom_read_btn() {
-		printf(
+if ( !function_exists('rb_blog_two_custom_excerpt_length') ) {
+    function rb_blog_two_custom_excerpt_length( $length ) {
+		if ( true == get_theme_mod( 'rbth_excerpt' ) ) {
+			$length = get_theme_mod( 'rbth_excerpt_word' );
+			if ( $length ) {
+				return $length;
+			}
+			else {
+				return absint(20);
+			}
+		}
+		else {
+			$length = absint(20);
+			return $length;
+		}
+	}
+}
+add_filter( 'excerpt_length', 'rb_blog_two_custom_excerpt_length', 999 );
+
+if ( !function_exists('rb_blog_two_custom_excerpt_more') ) {
+	function rb_blog_two_custom_excerpt_more( $more ) {	
+		$more2 = sprintf(
 			/* translators:
 			%1$s: Slug of current post.
 			%2$s: Button text.
 			*/
-			'<a class="theme-btn" href="%1$s">%2$s</a>',
-			esc_url( get_permalink() ),
+			'[...]<br><br><a class="theme-btn" href="%1$s">%2$s</a>',
+			esc_url( get_permalink( get_the_ID() ) ),
 			esc_html__( 'read more', 'rb-blog-two' )
-		);		
+		);
+		return $more2;
 	}
-    add_action( 'rb_blog_two_read_more_btn', 'rb_blog_two_custom_read_btn' );
 }
+add_filter( 'excerpt_more', 'rb_blog_two_custom_excerpt_more' );
 
 /*************************************
 ***** 10. Post Pagination Output *****

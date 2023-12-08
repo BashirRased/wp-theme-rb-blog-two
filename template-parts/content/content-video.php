@@ -6,6 +6,10 @@
  *
  * @package rb-blog-two
  */
+
+$video_post = get_field( 'rbth_post_video_file_format' );
+$video_file = get_field( 'rbth_post_video_file' );
+$video_oembed = get_field( 'rbth_post_video_iframe' );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post-item' ); ?>>
@@ -58,9 +62,19 @@
                     <?php endif; ?>
                 </header>
 
-                <?php if ( get_the_content() ) : ?>
+                <?php if ( get_the_content() || !empty($video_post) ) : ?>
                     <div class="entry-content">
-                        <?php the_content(); ?>
+                    <?php
+                    if ( $video_post == 'file' ) : ?>
+                        <video controls>
+                            <source src="<?php echo esc_url($video_file['url']); ?>">
+                        </video>
+                        <?php the_content();
+                    elseif ( $video_post == 'iframe' ) : echo wp_kses_post($video_oembed); the_content(); ?>
+                    <?php else :
+                        the_content();
+                    endif;                  
+                    ?>
                     </div>
                 <?php endif; ?>
 

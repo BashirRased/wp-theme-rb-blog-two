@@ -1,48 +1,3 @@
-/*
-Theme Name: RB Blog Two
-Theme URI: https://bashirrased.com/theme/rb-blog-two/
-Text Domain: rb-blog-two
-Version: 1.0.2
-Requires at least: 6.1
-Tested up to: 6.2
-Requires PHP: 5.6
-Description: RB Blog Two is a responsive WordPress personal blog theme for WordPress. It is a WordPress theme specifically crafted for crafting professional blog websites. It is built upon the latest web technologies. Live Preview: https://bashirrased.com/theme/rb-blog-two/
-Tags: blog, custom-background, custom-logo, custom-menu, featured-images, full-width-template, right-sidebar, one-column, sticky-post, threaded-comments
-Author: Bashir Rased
-Author URI: https://bashirrased.com/
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-RB Blog Two WordPress Theme, (C) 2022-2023 Bashir Rased.
-RB Blog Two is distributed under the terms of the GNU GPL.
-*/
-
-/*=============================
-Table of CSS Content Start Here
-===============================
-	01. Default HTML CSS
-	02. Common Class CSS
-	03. Nice Select Customize CSS
-	04. Mean Menu Customize CSS
-	05. WordPress Core CSS
-	06. WordPress Widget CSS
-	07. WordPress Block CSS
-    08. Preloader CSS Area
-    09. Header Top CSS Area
-    10. Header Site Branding CSS Area
-    11. Header Menu CSS Area
-    12. Breadcrumbs CSS Area
-    13. Blog Item CSS Area
-    14. Blog Single Item CSS
-    15. Pagination CSS Area
-    16. Comment Template CSS Area
-    17. Error Page CSS Area
-    18. Footer CSS Area
-    19. Scroll To Top CSS Area
-=============================
-Table of CSS Content End Here
-===========================*/
-
 @media only screen and (max-width: 991px) {
     .header-top-area,
     .site-branding-area,
@@ -63,6 +18,11 @@ Table of CSS Content End Here
     .header-logo {
         margin-right: 0;
         margin-bottom: 30px;
+    }
+
+    .header-menu-area.header-fixed,
+    .header-menu-area.header-transparent-area {
+        position: static;
     }
 
     .header-menu .menu-item-has-children > a::after,

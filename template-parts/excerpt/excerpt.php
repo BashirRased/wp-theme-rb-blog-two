@@ -23,11 +23,12 @@
                     <?php endif; ?>
 
                     <?php
-                        if ( true == get_theme_mod( 'rbth_post_meta_single' ) ) :
+                        if ( true == get_theme_mod( 'rbth_post_meta_blog' ) ) {
 
                         // Post Meta List
-                        $post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_single' );
-                    ?>                    
+                        $post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_blog' );
+                        if ( $post_meta_list_blog ) {
+                    ?>
                     <div class="entry-meta">
                     <?php
                         foreach ( $post_meta_list_blog as $post_meta_item_blog ) {
@@ -37,30 +38,35 @@
                             if( $post_meta_item_blog == "date-meta" ) {
                                 do_action ( 'rb_blog_two_date_meta' );
                             }
+                            if( $post_meta_item_blog == "cat-meta" ) {
+                                do_action ( 'rb_blog_two_cat_meta' );
+                            }
                             if( $post_meta_item_blog == "comments-meta" ) {
                                 do_action ( 'rb_blog_two_comments_meta' );
                             }
                             if( $post_meta_item_blog == "edit-meta" && is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
                                 do_action ( 'rb_blog_two_edit_meta' );
                             }
-                        }
+                        }                   
                     ?>
                     </div>
-                    <?php else : ?>
+                    <?php } } else { ?>
                     <div class="entry-meta">
                         <?php
                             do_action ( 'rb_blog_two_author_meta' );
                             do_action ( 'rb_blog_two_date_meta' );
+                            do_action ( 'rb_blog_two_cat_meta' );
                             do_action ( 'rb_blog_two_comments_meta' );
                             do_action ( 'rb_blog_two_edit_meta' );
                         ?>
                     </div>
-                    <?php endif; ?>
+                    <?php } ?>
+                    
                 </header>
 
                 <?php if ( get_the_content() ) : ?>
                     <div class="entry-content">
-                        <?php the_content(); ?>
+                        <?php the_excerpt(); ?>
                     </div>
                 <?php endif; ?>
 

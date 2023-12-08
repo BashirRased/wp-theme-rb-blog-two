@@ -6,6 +6,10 @@
  *
  * @package rb-blog-two
  */
+
+$audio_post = get_field( 'rbth_post_audio_file_format' );
+$audio_file = get_field( 'rbth_post_audio_file' );
+$audio_oembed = get_field( 'rbth_post_audio_iframe' );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post-item' ); ?>>
@@ -23,11 +27,12 @@
                     <?php endif; ?>
 
                     <?php
-                        if ( true == get_theme_mod( 'rbth_post_meta_single' ) ) :
+                        if ( true == get_theme_mod( 'rbth_post_meta_blog' ) ) {
 
                         // Post Meta List
-                        $post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_single' );
-                    ?>                    
+                        $post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_blog' );
+                        if ( $post_meta_list_blog ) {
+                    ?>
                     <div class="entry-meta">
                     <?php
                         foreach ( $post_meta_list_blog as $post_meta_item_blog ) {
@@ -37,31 +42,45 @@
                             if( $post_meta_item_blog == "date-meta" ) {
                                 do_action ( 'rb_blog_two_date_meta' );
                             }
+                            if( $post_meta_item_blog == "cat-meta" ) {
+                                do_action ( 'rb_blog_two_cat_meta' );
+                            }
                             if( $post_meta_item_blog == "comments-meta" ) {
                                 do_action ( 'rb_blog_two_comments_meta' );
                             }
                             if( $post_meta_item_blog == "edit-meta" && is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
                                 do_action ( 'rb_blog_two_edit_meta' );
                             }
-                        }
+                        }                   
                     ?>
                     </div>
-                    <?php else : ?>
+                    <?php } } else { ?>
                     <div class="entry-meta">
                         <?php
                             do_action ( 'rb_blog_two_author_meta' );
                             do_action ( 'rb_blog_two_date_meta' );
+                            do_action ( 'rb_blog_two_cat_meta' );
                             do_action ( 'rb_blog_two_comments_meta' );
                             do_action ( 'rb_blog_two_edit_meta' );
                         ?>
                     </div>
-                    <?php endif; ?>
+                    <?php } ?>
+                    
                 </header>
 
-                <?php if ( get_the_content() ) : ?>
-                    <div class="entry-content">
-                        <?php the_content(); ?>
-                    </div>
+                <?php if ( get_the_content() || !empty($audio_post) ) : ?>
+                <div class="entry-content">
+                    <?php
+                    if ( $audio_post == 'file' ) : ?>
+                        <audio controls>
+                            <source src="<?php echo esc_url($audio_file['url']); ?>">
+                        </audio>
+                    <?php elseif ( $audio_post == 'iframe' ) : echo wp_kses_post($audio_oembed); ?>
+                    <?php else :
+                        the_excerpt();
+                    endif;
+                    ?>
+                </div>
                 <?php endif; ?>
 
             </div>

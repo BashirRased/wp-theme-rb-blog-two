@@ -2,9 +2,7 @@
 /**
  * The preloader template file loaded under header.php
  *
- * @package RB Blog Two
- * @version RB Blog Two 1.0.2
- * @since RB Blog Two 1.0.1
+ * @package rb-blog-two
  */
 ?>
 

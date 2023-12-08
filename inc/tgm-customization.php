@@ -4,9 +4,7 @@
  * 
  * The template loading under functions.php
  * 
- * @package RB Blog Two
- * @version RB Blog Two 1.0.2
- * @since RB Blog Two 1.0.1
+ * @package rb-blog-two
  */
  
 function rb_blog_two_required_plugins() {
@@ -17,6 +15,20 @@ function rb_blog_two_required_plugins() {
 		array(
 			'name'      => __( 'Breadcrumb NavXT', 'rb-blog-two' ),
 			'slug'      => 'breadcrumb-navxt',
+			'recommend'  => true,
+		),
+
+		// Kirki Customizer Framework
+		array(
+			'name'      => __( 'Kirki Customizer Framework', 'rb-blog-two' ),
+			'slug'      => 'kirki',
+			'recommend'  => true,
+		),
+
+		// Advanced Custom Fields (ACF)
+		array(
+			'name'      => __( 'Advanced Custom Fields (ACF)', 'rb-blog-two' ),
+			'slug'      => 'advanced-custom-fields',
 			'recommend'  => true,
 		),
 

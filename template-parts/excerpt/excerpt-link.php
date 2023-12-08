@@ -6,6 +6,9 @@
  *
  * @package rb-blog-two
  */
+
+$link_file = "";
+$link_file = get_field( 'rbth_post_link' );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post-item' ); ?>>
@@ -23,11 +26,12 @@
                     <?php endif; ?>
 
                     <?php
-                        if ( true == get_theme_mod( 'rbth_post_meta_single' ) ) :
+                        if ( true == get_theme_mod( 'rbth_post_meta_blog' ) ) {
 
                         // Post Meta List
-                        $post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_single' );
-                    ?>                    
+                        $post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_blog' );
+                        if ( $post_meta_list_blog ) {
+                    ?>
                     <div class="entry-meta">
                     <?php
                         foreach ( $post_meta_list_blog as $post_meta_item_blog ) {
@@ -37,31 +41,46 @@
                             if( $post_meta_item_blog == "date-meta" ) {
                                 do_action ( 'rb_blog_two_date_meta' );
                             }
+                            if( $post_meta_item_blog == "cat-meta" ) {
+                                do_action ( 'rb_blog_two_cat_meta' );
+                            }
                             if( $post_meta_item_blog == "comments-meta" ) {
                                 do_action ( 'rb_blog_two_comments_meta' );
                             }
                             if( $post_meta_item_blog == "edit-meta" && is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
                                 do_action ( 'rb_blog_two_edit_meta' );
                             }
-                        }
+                        }                   
                     ?>
                     </div>
-                    <?php else : ?>
+                    <?php } } else { ?>
                     <div class="entry-meta">
                         <?php
                             do_action ( 'rb_blog_two_author_meta' );
                             do_action ( 'rb_blog_two_date_meta' );
+                            do_action ( 'rb_blog_two_cat_meta' );
                             do_action ( 'rb_blog_two_comments_meta' );
                             do_action ( 'rb_blog_two_edit_meta' );
                         ?>
                     </div>
-                    <?php endif; ?>
+                    <?php } ?>
+                    
                 </header>
 
-                <?php if ( get_the_content() ) : ?>
-                    <div class="entry-content">
-                        <?php the_content(); ?>
-                    </div>
+                <?php if ( get_the_content() || empty( $link_file ) ) : ?>
+                <div class="entry-content">
+                    <?php
+                    if( !empty( $link_file ) ):
+                        $link_url = $link_file['url'];
+                        $link_title = $link_file['title'];
+                        $link_target = $link_file['target'] ? $link_file['target'] : '_self';
+                    ?>
+                        <a class="link-post" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                    <?php else :
+                        the_excerpt();
+                    endif;
+                    ?>
+                </div>
                 <?php endif; ?>
 
             </div>

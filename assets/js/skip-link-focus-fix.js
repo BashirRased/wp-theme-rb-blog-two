@@ -6,10 +6,6 @@
  * This is the source file for what is minified in the rb_blog_two_focus_fix() PHP function.
  *
  * Learn more: https://git.io/vWdr2
- *
- * @package RB Blog Two
- * @version RB Blog Two 1.0.2
- * @since RB Blog Two 1.0.1
  */
  ( function() {
 	var isIe = /(trident|msie)/i.test( navigator.userAgent );

@@ -6,6 +6,10 @@
  *
  * @package rb-blog-two
  */
+
+$audio_post = get_field( 'rbth_post_audio_file_format' );
+$audio_file = get_field( 'rbth_post_audio_file' );
+$audio_oembed = get_field( 'rbth_post_audio_iframe' );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post-item' ); ?>>
@@ -58,10 +62,20 @@
                     <?php endif; ?>
                 </header>
 
-                <?php if ( get_the_content() ) : ?>
-                    <div class="entry-content">
-                        <?php the_content(); ?>
-                    </div>
+                <?php if ( get_the_content() || !empty($audio_post) ) : ?>
+                <div class="entry-content">
+                    <?php
+                    if ( $audio_post == 'file' ) : ?>
+                        <audio controls>
+                            <source src="<?php echo esc_url($audio_file['url']); ?>">
+                        </audio>
+                        <?php the_content();
+                    elseif ( $audio_post == 'iframe' ) : echo wp_kses_post($audio_oembed); the_content(); ?>
+                    <?php else :
+                        the_content();
+                    endif;                  
+                    ?>
+                </div>
                 <?php endif; ?>
 
             </div>
