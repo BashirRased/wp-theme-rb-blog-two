@@ -1,18 +1,12 @@
 <?php
 /**
- * The template for displaying right sidebar
+ * Displays the right sidebar area.
  *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
 
-if ( ! is_active_sidebar( 'sidebar-right' )) {
-	return;
+if ( is_active_sidebar( 'sidebar-1' ) ) {
+    dynamic_sidebar( 'sidebar-1' );
 }
-?>
-
-<aside class="col-md-4 sidebar-area">
-	<?php dynamic_sidebar( 'sidebar-right' ); ?>
-</aside>

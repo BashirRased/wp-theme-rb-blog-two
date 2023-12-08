@@ -1,50 +1,60 @@
 <?php
 /**
- * Displays header site branding.
+ * The site braning template file loaded under header.php
  *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
 
-$blog_info    = get_bloginfo( 'name' );
-$description  = get_bloginfo( 'description' );
+$site_title    = get_bloginfo( 'name' );
+$site_tagline  = get_bloginfo( 'description', 'display' );
+
+if ( has_custom_logo() || display_header_text() ) : 
 ?>
-<div class="site-branding-area">
+
+<!--============================================
+===== Header Site Branding Area Start Here =====
+=============================================-->
+<div class="header-site-branding">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-12">
 
-                <div class="site-branding-inner">               
-
+                <div class="site-branding-area">
                     <?php if ( has_custom_logo() ) : ?>
-                        <div class="site-logo">
-                            <?php the_custom_logo(); ?>
-                        </div>
+                    <div class="header-logo">
+                        <?php the_custom_logo(); ?>
+                    </div>
                     <?php endif; ?>
 
-                    <div class="site-branding">
+                    <?php if ( display_header_text() ) : ?>
+                    <div class="site-title-and-tagline">
 
-                        <?php if ( $blog_info ) : ?>
-                            <h1 class="site-title">
-                                <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-                                    <?php echo esc_html( $blog_info ); ?>
-                                </a>
-                            </h1>
-                        <?php endif; ?>                
+                        <?php if ( $site_title ): ?>
+                        <h1 class="header-site-title">
+                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                                <?php echo esc_html( $site_title, 'rb-blog-two' ); ?>
+                            </a>
+                        </h1>
+                        <?php endif; ?>
 
-                        <?php if ( $description ) : ?>
-                            <p class="site-description">
-                                <?php echo esc_html( $description ); ?>
+                        <?php if ( $site_tagline ) : ?>
+                            <p class="header-site-tagline">
+                                <?php echo esc_html( $site_tagline, 'rb-blog-two' ); ?>
                             </p>
                         <?php endif; ?>
 
-                    </div><!-- .site-branding -->
+                    </div>
+                    <?php endif; ?>
+                </div>                
 
-                </div><!-- .site-branding-inner -->
-
-            </div><!-- .col-md-12 -->
+            </div>
         </div><!-- .row -->
     </div><!-- .container -->
-</div><!-- .site-branding -->
+</div>
+<!--==========================================
+===== Header Site Branding Area End Here =====
+===========================================-->
+
+<?php endif; ?>

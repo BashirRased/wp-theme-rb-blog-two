@@ -1,99 +1,44 @@
 <?php
 /**
- * The template for displaying image attachments
+ * The template for displaying image attachment.
  *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
 
 get_header();
-
-if ( is_active_sidebar( 'sidebar-right' ) ) {
-	$col_class = 'col-md-8';
-} else {
-	$col_class = 'col-md-12';
-}
 ?>
 
-<div class="container">
-	<div class="row">
-		<div class="<?php echo esc_attr( $col_class ); ?>">
-			<?php
-			// Start the loop.
-			while ( have_posts() ) {
-				the_post();
-				?>
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<header class="entry-header">
-						<?php
-						do_action( 'rb_blog_two_post_sticky' );
-						do_action( 'rb_blog_two_post_visibility' );
-						do_action( 'rb_blog_two_post_format' );	the_title( '<h2 class="entry-title">', '</h2>' );
-						?>
-					</header><!-- .entry-header -->
-					
+<!--====================================
+===== Site Content Area Start Here =====
+=====================================-->
+<div id="content" class="site-content">        
+    <div class="container">
+        <div class="row">
 
-					<div class="entry-meta">
-						<?php
-						do_action( 'rb_blog_two_post_author' );
-						do_action( 'rb_blog_two_post_publish_date' );
-						do_action( 'rb_blog_two_post_categories' );
-						do_action( 'rb_blog_two_post_comments_count' );
-						do_action( 'rb_blog_two_post_edit' );
-						?>
-					</div><!-- .entry-meta -->
+        <div class="col-lg-8">
+            <div class="content-area">
 
-					<div class="entry-content">
-						<figure class="wp-block-image">
-							<?php
-							/**
-							 * Filter the default image attachment size.
-							 *
-							 * @since RB Blog Two 1.0.0
-							 *
-							 * @param string $image_size Image size. Default 'full'.
-							 */
-							$image_size = apply_filters( 'rb_blog_two_attachment_size', 'full' );
-							echo wp_get_attachment_image( get_the_ID(), $image_size );
-							?>
+                <main id="primary" class="site-main">
+                    <div class="container">
+                        <div class="row">
+                            <figure class="wp-block-image">
+                            <?php echo wp_get_attachment_image( get_the_ID(), '' );
+                                if ( wp_get_attachment_caption() ) : ?>
+                                    <figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption() ); ?></figcaption>
+                                <?php endif; ?>
+                            </figure><!-- .wp-block-image -->
 
-							<?php if ( wp_get_attachment_caption() ) : ?>
-								<figcaption class="wp-caption-text"><?php echo wp_kses_post( wp_get_attachment_caption() ); ?></figcaption>
-							<?php endif; ?>
-						</figure><!-- .wp-block-image -->
+                            <header class="entry-header">
+                                <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+                            </header>
+                        </div><!-- .row -->
+                    </div><!-- .container -->                    
+                </main><!-- .site-main -->
 
-						<?php
-						the_content();
-						do_action( 'rb_blog_two_pages_link' );
-						?>
-					</div><!-- .entry-content -->
+            </div><!-- .content-area -->
+        </div>
 
-					<footer class="entry-footer">
-						<?php do_action( 'rb_blog_two_post_tags' ); ?>
-					</footer><!-- .entry-footer -->
-				</article><!-- #post-<?php the_ID(); ?> -->
-
-				<?php
-				// If comments are open or there is at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
-				}
-
-			} // End the loop.
-			?>
-
-		</div><!-- $col_class -->
-
-		<?php
-			if( is_active_sidebar( 'sidebar-right' ) ){
-				get_sidebar();
-			}
-		?>
-		
-	</div><!-- .row -->
-</div><!-- .container -->
-
-<?php
+        <?php get_sidebar();
 get_footer();

@@ -6,61 +6,69 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
 
 ?>
-<!doctype html>
-<html <?php language_attributes(); ?>>
+<!DOCTYPE html>
+<html class="no-js" <?php language_attributes(); ?>>
+
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<?php wp_head(); ?>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+    <?php wp_head();?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class();?>>
 <?php wp_body_open(); ?>
 
-<!--=================================
-*************************************
-***** Page Wrap Area Start Here *****
-*************************************
-==================================-->
 <div id="page" class="site">
+    <a class="skip-link screen-reader-text" href="#page-content">
+        <?php esc_html_e( 'Skip to content', 'rb-blog-two' ); ?>
+    </a>
 
-    <!-- skip to content button add -->
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'skip to content', 'rb-blog-two' ); ?></a>
+<?php
+    // Preloader Template
+    if ( function_exists( 'rbth_preloader_custom' ) ) {
+        do_action( "rbth_preloader" );
+    } else {
+        get_template_part( 'template-parts/header/preloader' );
+    }
+?>
 
-    <!--==============================
-    ===== Header Area Start Here =====
-    ===============================-->
-    <header>
-        <!-- Header Top Area Start Here -->
-        <?php get_template_part( 'template-parts/header/header-top' ); ?>
+<!--==============================
+===== Header Area Start Here =====
+===============================-->
+<header class="site-header">
+    <?php
+        // Header Top Template
+        if ( function_exists( 'rbth_header_top_custom' ) ) {
+            do_action( "rbth_header_top" );
+        } else {
+            get_template_part( 'template-parts/header/header-top' );
+        }
+        
+        // Header Site Branding Template
+        if ( function_exists( 'rbth_site_braning_custom' ) ) {
+            do_action( "rbth_site_braning" );
+        } else {
+            get_template_part( 'template-parts/header/site-branding' );
+        }
 
-        <!-- Header Site Branding Area Start Here -->
-        <?php get_template_part( 'template-parts/header/site-branding' ); ?>
+        // Header Menu Template
+        get_template_part( 'template-parts/header/header-menu' );
 
-        <!-- Header Menu Area Start Here -->
-        <?php get_template_part( 'template-parts/header/header-menu' ); ?>
-
-        <!-- Header Page Banner with Breadcrumbs Area Start Here -->
-        <?php get_template_part( 'template-parts/header/breadcrumbs' ); ?>
-    </header>
-    <!--============================
-    ===== Header Area End Here =====
-    =============================-->
-
-    <!--=================================================
-    ===== Page Content with Sidebar Area Start Here =====
-    ==================================================-->
-	<div id="content" class="site-content">
-		
-        <!--===== Page Content Area Start Here =====-->
-        <div id="primary" class="content-area">
-			
-            <!-- Page Blog List Area Start Here -->
-            <main id="main" class="site-main">
+        // Breadcrumbs Template
+        if ( function_exists( 'rbth_breadcrumbs_custom' ) ) {
+            do_action( "rbth_breadcrumbs" );
+        } else {
+            get_template_part( 'template-parts/header/breadcrumbs' );
+        }
+    ?>        
+</header>
+<!--============================
+===== Header Area End Here =====
+=============================-->

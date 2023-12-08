@@ -1,106 +1,103 @@
-@charset "UTF-8";
-
 /*
 Theme Name: RB Blog Two
-Theme URI: https://github.com/BashirRased/wp-theme-rb-blog-two
-Author: Bashir Rased
-Author URI: https://profiles.wordpress.org/bashirrased2017/
-Description: RB Blog Two is your  personal blog website.
-Requires at least: 5.3
-Tested up to: 6.0
+Theme URI: https://bashirrased.com/theme/rb-blog-two/
+Text Domain: rb-blog-two
+Version: 1.0.1
+Requires at least: 6.1
+Tested up to: 6.2
 Requires PHP: 5.6
-Version: 1.0.0
+Description: RB Blog Two is a responsive WordPress personal blog theme for WordPress. It is a WordPress theme specifically crafted for crafting professional blog websites. It is built upon the latest web technologies. Live Preview: https://bashirrased.com/theme/rb-blog-two/
+Tags: blog, custom-background, custom-logo, custom-menu, featured-images, full-width-template, right-sidebar, one-column, sticky-post, threaded-comments
+Author: Bashir Rased
+Author URI: https://bashirrased.com/
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: rb-blog-two
-Tags: one-column, custom-menu, custom-logo, featured-images, sticky-post, threaded-comments, translation-ready
 
-RB Blog Two WordPress Theme, (C) 2022 Bashir Rased.
+RB Blog Two WordPress Theme, (C) 2022-2023 Bashir Rased.
 RB Blog Two is distributed under the terms of the GNU GPL.
 */
 
-@media all and (max-width: 991px) {
+/*=============================
+Table of CSS Content Start Here
+===============================
+	01. Default HTML CSS
+	02. Common Class CSS
+	03. Nice Select Customize CSS
+	04. Mean Menu Customize CSS
+	05. WordPress Core CSS
+	06. WordPress Widget CSS
+	07. WordPress Block CSS
+    08. Preloader CSS Area
+    09. Header Top CSS Area
+    10. Header Site Branding CSS Area
+    11. Header Menu CSS Area
+    12. Breadcrumbs CSS Area
+    13. Blog Item CSS Area
+    14. Blog Single Item CSS
+    15. Pagination CSS Area
+    16. Comment Template CSS Area
+    17. Error Page CSS Area
+    18. Footer CSS Area
+    19. Scroll To Top CSS Area
+=============================
+Table of CSS Content End Here
+===========================*/
 
-    .current-time-display,
-    .current-date-display {
+@media only screen and (max-width: 991px) {
+    .header-top-area,
+    .site-branding-area,
+    .copyright-text,
+    .powered-by-text,
+    .breadcrumbs-title,
+    .breadcrumbs-right-area {
         text-align: center;
-        margin: 5px 0;
-    }
-	.current-date-display {
-        float: none;
     }
 
-    .site-branding-inner,
-    .site-logo,
-    .site-branding {
+    .site-branding-area,
+    .header-logo,
+    .site-title-and-tagline,
+    .breadcrumbs-right-area {
         display: block;
-        text-align: center;
-    }
-    .site-logo {
-        margin-left: 0;
     }
 
-    .header-menu li {
-        float: none;
-        display: block;        
+    .header-logo {
+        margin-right: 0;
+        margin-bottom: 30px;
     }
 
-    .header-menu li a { 
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .header-menu li a i {
+    .header-menu .menu-item-has-children > a::after,
+    .header-menu .menu-item-has-children > a.submenu-item-link::after {
         display: none;
     }
 
-    .header-menu-dropdown,
-    .header-menu-multi-dropdown {
-        position: static;
-        display: none;
+    .submenu li {
+        border-bottom: none;
     }
 
-    .dropdown-menu-btn {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 45px;
-        height: 45px;
-        border: none;
-        background-color: #fff;
+    .submenu li:hover > .submenu, .submenu li:focus-within > .submenu {
+        left: 0;
+        top: 100%;
     }
 
-    .dropdown-menu-btn:hover,
-    .dropdown-menu-btn:focus {
-        color: #fff;
-        border: 1px solid #fff;
-    }
-
-    .dropdown-menu-open {
-        display: block;
-    }
-
-    .header-menu-dropdown a {
-        border-top: none;
-    }
-
-    .header-menu-multi-dropdown a {
+    .submenu .submenu li {
         border-left: none;
     }
 
-    .breadcrumbs-nav ul li {
-        display: block;
-        margin-left: 0;
+    .breadcrumbs-right-area ul {
+        padding: 0;
     }
 
-    .copyright-text,
-    .powered-by-text {
-        margin: 5px;
-        text-align: center;
+    .error-page .page-header-title {
+        font-size: 100px;
     }
 
-    .powered-by-text {
-        float: none;
+    .widget-area {
+        margin-top: 30px;
     }
+}
 
+@media only screen and (max-width: 600px) {
+    .admin-bar header {
+        padding-top: 45px;
+    }
 }

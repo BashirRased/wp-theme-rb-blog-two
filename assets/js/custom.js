@@ -1,92 +1,111 @@
+/*
+Theme Name: RB Blog Two
+Theme URI: https://bashirrased.com/theme/rb-blog-two/
+Text Domain: rb-blog-two
+Version: 1.0.1
+Requires at least: 6.1
+Tested up to: 6.2
+Requires PHP: 5.6
+Description: RB Blog Two is a responsive WordPress personal blog theme for WordPress. It is a WordPress theme specifically crafted for crafting professional blog websites. It is built upon the latest web technologies. Live Preview: https://bashirrased.com/theme/rb-blog-two/
+Tags: blog, custom-background, custom-logo, custom-menu, featured-images, full-width-template, right-sidebar, one-column, sticky-post, threaded-comments
+Author: Bashir Rased
+Author URI: https://bashirrased.com/
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+RB Blog Two WordPress Theme, (C) 2022-2023 Bashir Rased.
+RB Blog Two is distributed under the terms of the GNU GPL.
+*/
+
+/*============================
+Table of JS Content Start Here
+==============================
+	01. Preloader
+	02. Header Memu
+    03. Nice Select
+    04. Scroll to Top
+    05. Live Clock jQuery
+============================
+Table of JS Content End Here
+==========================*/
+
 (function ($) {
-  'use strict';
+    'use strict';
 
-  $(document).ready(function(){
+    /*=========================================
+    ===== 01. Preloader jQuery Start Here =====
+    =========================================*/
+    $(window).on("load", function () {
+        $(".folding-cube").delay(700).fadeOut(),
+        setTimeout(function () {
+            setTimeout(function () {
+                $("#preloader").hide()
+            }, 1500)
+        }, 800)
+    });
+    /*=======================================
+    ===== 01. Preloader jQuery End Here =====
+    =======================================*/
 
-    /*==========================================
-		===== 01. Live Clock jQuery Start Here =====
-		==========================================*/
-    var myVar = setInterval(function() {
-      myTimer();
-    }, 100);
-  
-    function myTimer() {
-      var d = new Date();
-      document.getElementById("time").innerHTML = d.toLocaleTimeString();
-    }
-    /*========================================
-		===== 01. Live Clock jQuery End Here =====
-		========================================*/
-    
-    /*=================================================
-		===== 01. Header Menu Fixed jQuery Start Here =====
-		=================================================*/
-    $(window).scroll(function(){
-			if ($(window).scrollTop() >= 50) {
-				$('.header-menu-area').addClass('header-menu-fixed');
-			}
-			else {
-				$('.header-menu-area').removeClass('header-menu-fixed');
+    $(document).ready(function () {
+
+        /*===========================================
+        ===== 02. Header Memu jQuery Start Here =====
+        ===========================================*/
+        $('.header-menu-container').meanmenu({
+			meanMenuContainer: '.header-menu-area .container',
+			meanScreenWidth: "991",
+			meanMenuOpen: '<span></span><span></span><span></span>',
+		});
+        /*=========================================
+        ===== 02. Header Memu jQuery End Here =====
+        =========================================*/
+
+        /*===========================================
+        ===== 03. Nice Select jQuery Start Here =====
+        ===========================================*/
+        $('select').niceSelect();
+        /*=========================================
+        ===== 03. Nice Select jQuery End Here =====
+        =========================================*/
+
+        /*=============================================
+        ===== 04. Scroll to Top jQuery Start Here =====
+        =============================================*/
+		/*===== 4.1 Scroll to Top Button Display =====*/
+		$(window).scroll(function(){		  
+			var scrollTopBtn = $(window).scrollTop();		  
+			if( scrollTopBtn > 100 ){
+				$(".scroll-to-top").fadeIn();
+			}else {
+				$(".scroll-to-top").fadeOut();
 			}
 		});
-    /*===============================================
-		===== 01. Header Menu Fixed jQuery End Here =====
-		===============================================*/
+		  
+		/*===== 4.2 Scroll to Top Button Clickable =====*/
+		$(".scroll-to-top").on('click', function(){
+			$("html, body").animate({'scrollTop' : 0}, 1500);
+			return false;
+		});	  
+		/*===========================================
+        ===== 04. Scroll to Top jQuery End Here =====
+        ===========================================*/
 
-    /*===================================================
-		===== 01. Multi Dropdown Menu jQuery Start Here =====
-		===================================================*/
-    $(".sub-menu .sub-menu").addClass("header-menu-multi-dropdown");
-    $(".header-menu-multi-dropdown").removeClass("sub-menu");
-    $(".header-menu-multi-dropdown").siblings("a").append
-		('<i class="fa-solid fa-angle-right"></i>');
-    /*=================================================
-		===== 01. Multi Dropdown Menu jQuery End Here =====
-		=================================================*/
+        /*==========================================
+		===== 05. Live Clock jQuery Start Here =====
+		==========================================*/
+        var myVar = setInterval(function() {
+            myTimer();
+        }, 100);
+        
+        function myTimer() {
+            var d = new Date();
+            document.getElementById("time").innerHTML = d.toLocaleTimeString();
+        }
+        /*========================================
+        ===== 05. Live Clock jQuery End Here =====
+        ========================================*/
 
-    /*=============================================
-		===== 01. Dropdown Menu jQuery Start Here =====
-		=============================================*/
-    $(".sub-menu").addClass("header-menu-dropdown");
-    $(".header-menu-dropdown").removeClass("sub-menu");
-    $(".header-menu-dropdown").siblings("a").append
-		('<i class="fa-solid fa-chevron-down"></i>');
-    /*===========================================
-		===== 01. Dropdown Menu jQuery End Here =====
-		===========================================*/
-
-    /*===========================================================
-		===== 01. Dropdown Menu Button for Mobile Device jQuery Start Here =====
-		===========================================================*/
-    $(".menu-item-has-children").children("a").append('<button class="dropdown-menu-btn"><span class="fa-solid fa-chevron-down"></span></button>');
-
-    $('.dropdown-menu-btn').on("click", function (event) {
-      event.preventDefault();
-      $(this).parent("a").siblings("ul").toggleClass('dropdown-menu-open');
-  });
-    /*=========================================================
-		===== 01. Dropdown Menu Button for Mobile Device jQuery End Here =====
-		=========================================================*/
-
-    /*====================================================
-		===== 01. Scroll To Top Button jQuery Start Here =====
-		====================================================*/
-    $(window).scroll(function() {
-      if ($(this).scrollTop() > 100) {
-          $('.scroll-to-top').fadeIn();
-      } else {
-          $('.scroll-to-top').fadeOut();
-      }
     });
-
-    $(".scroll-to-top").on('click', function(){
-      $("html, body").animate({'scrollTop' : 0}, 700);
-      return false;
-    });
-    /*==================================================
-		===== 01. Scroll To Top Button jQuery End Here =====
-		==================================================*/
-
-  });
 
 }(jQuery));

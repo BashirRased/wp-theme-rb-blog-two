@@ -1,32 +1,43 @@
 <?php
 /**
- * Displays header top.
+ * The header top template file loaded under header.php
  *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
 ?>
 
-<div class="header-top">
+<!--==================================
+===== Header Top Area Start Here =====
+===================================-->
+<div class="header-top-area">
     <div class="container">
         <div class="row">
 
-            <div class="col-md-6">
-                <div class="current-time-display">
+            <!--===== Header Top Left Area Start Here =====-->
+            <div class="col-lg-6">
+                <div class="header-top-left">
                     <i class="fa-solid fa-clock"></i>
                     <span id="time"></span>
                 </div>
             </div>
+            <!--===== Header Top Left Area Start Here =====-->
 
-            <div class="col-md-6">
-                <div class="current-date-display">
+            <!--===== Header Top Right Area Start Here =====-->
+            <div class="col-lg-6">
+                <div class="header-top-right float-lg-end">
                     <i class="fa-solid fa-calendar-days"></i>
-                    <?php echo esc_html( date_i18n( 'l, jS F Y' ),'rb-blog-two' ); ?>
+                    <span>
+                        <?php echo esc_html( date_i18n( 'l, jS F Y' ),'rb-blog-two' ); ?>
+                   </span>
                 </div>
             </div>
+            <!--===== Header Top Right Area End Here =====-->
 
         </div><!-- .row -->
     </div><!-- .container -->
-</div><!-- .header-top -->
+</div>
+<!--================================
+===== Header Top Area End Here =====
+=================================-->

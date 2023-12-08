@@ -1,53 +1,48 @@
 <?php
 /**
- * Template part for displaying posts
+ * Template part for displaying single post
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
-
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post-item' ); ?>>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">               
 
-	<header class="entry-header">
-		<?php
-		do_action( 'rb_blog_two_post_sticky' );
-		do_action( 'rb_blog_two_post_visibility' );
-		do_action( 'rb_blog_two_post_format' );		
-		the_title( '<h2 class="entry-title">', '</h2>' );
-		?>
-	</header><!-- .entry-header -->
+                <header class="entry-header">
 
-	<?php do_action( 'rb_blog_two_post_thumbnail' ); ?>
+                    <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-	<div class="entry-meta">
-		<?php
-		do_action( 'rb_blog_two_post_author' );
-		do_action( 'rb_blog_two_post_publish_date' );
-		do_action( 'rb_blog_two_post_categories' );
-		do_action( 'rb_blog_two_post_comments_count' );
-		do_action( 'rb_blog_two_post_edit' );
-		?>
-	</div><!-- .entry-meta -->
+                    <div class="entry-feature">
+                        <?php do_action ( 'rb_blog_two_post_thumbnail' ); ?>
+                    </div>
 
-	<div class="entry-content">
-		<?php
-		the_content();
-		wp_link_pages();
-		?>
-	</div><!-- .entry-content -->
+                    <div class="entry-meta">
+                        <?php
+                            do_action ( 'rb_blog_two_author_meta' );
+                            do_action ( 'rb_blog_two_date_meta' );
+                            do_action ( 'rb_blog_two_cat_meta' );
+                            do_action ( 'rb_blog_two_comments_meta' );
+                            do_action ( 'rb_blog_two_edit_meta' );
+                        ?>
+                    </div>
+                </header>
 
-	<footer class="entry-footer">
-		<?php do_action( 'rb_blog_two_post_tags' ); ?>
-	</footer><!-- .entry-footer -->
+                <?php if ( get_the_content() ) : ?>
+                    <div class="entry-content">
+                        <?php the_content(); ?>
+                    </div>
+                <?php endif; ?>
 
-	<?php if ( ! is_singular( 'attachment' ) ) : ?>
-		<?php get_template_part( 'template-parts/post/author-bio' ); ?>
-	<?php endif; ?>
+                <?php do_action( 'rb_blog_two_single_post_pagination' ); ?>
 
-</article><!-- #post-<?php the_ID(); ?> -->
+            </div>
+        </div><!-- .row -->
+    </div><!-- .container -->
+</article>

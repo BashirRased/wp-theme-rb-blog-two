@@ -1,18 +1,20 @@
 <?php
 /**
- * Functions and definitions
+ * RB Blog Two functions and definitions
  *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
 
-// Theme Setup
-if( file_exists( dirname( __FILE__ ) . '/inc/theme-setup.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/theme-setup.php' );
+// After Theme Setup
+if( file_exists( dirname ( __FILE__ ) . '/inc/after-theme-setup.php' ) ) {
+	require_once ( dirname ( __FILE__ ) . '/inc/after-theme-setup.php' );
+}
+
+// Third Party Assets
+if( file_exists( dirname( __FILE__ ) . '/inc/third-party-assets.php' ) ) {
+	require_once( dirname( __FILE__ ) . '/inc/third-party-assets.php' );
 }
 
 // Theme Assets
@@ -20,57 +22,37 @@ if( file_exists( dirname( __FILE__ ) . '/inc/theme-assets.php' ) ) {
 	require_once( dirname( __FILE__ ) . '/inc/theme-assets.php' );
 }
 
-// Menu Registration
-if( file_exists( dirname( __FILE__ ) . '/inc/menu-registration.php' ) ) {
-	require_once(dirname( __FILE__ ) . '/inc/menu-registration.php' );
+// Theme Widgets
+if( file_exists( dirname( __FILE__ ) . '/inc/widget-register.php') ) {
+	require_once( dirname( __FILE__ ) . '/inc/widget-register.php' );
 }
 
-// Widget Registration
-if( file_exists( dirname( __FILE__ ) . '/inc/widget-registration.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/widget-registration.php' );
+// Common Functions
+if( file_exists ( dirname( __FILE__ ) . '/inc/common-functions.php' ) ) {
+	require_once(dirname( __FILE__ ) . '/inc/common-functions.php' );
 }
 
-// Pingback URL
-if( file_exists( dirname( __FILE__ ) . '/inc/pingback-url-function.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/pingback-url-function.php' );
-}
-
-// Post Title
-if( file_exists( dirname( __FILE__ ) . '/inc/post-title-function.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/post-title-function.php' );
-}
-
-// Post Thumbnail
-if( file_exists( dirname( __FILE__ ) . '/inc/post-thumbnail-function.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/post-thumbnail-function.php');
-}
-
-// Post Excerpt
-if( file_exists( dirname( __FILE__ ) . '/inc/post-excerpt-functions.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/post-excerpt-functions.php' );
-}
-
-// Post Content
-if( file_exists( dirname( __FILE__ ) . '/inc/post-content-block-functions.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/post-content-block-functions.php');
-}
-
-// Post Meta
-if( file_exists( dirname( __FILE__ ) . '/inc/post-meta-functions.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/post-meta-functions.php' );
+// Post Functions
+if( file_exists ( dirname( __FILE__ ) . '/inc/post-functions.php' ) ) {
+	require_once(dirname( __FILE__ ) . '/inc/post-functions.php' );
 }
 
 // Breadcrumbs
-if( file_exists( dirname( __FILE__ ) . '/inc/breadcrumbs-function.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/breadcrumbs-function.php' );
+if( file_exists ( dirname( __FILE__ ) . '/inc/breadcrumbs.php' ) ) {
+	require_once( dirname( __FILE__ ) . '/inc/breadcrumbs.php' );
 }
 
-// Password Post Comment Form
-if( file_exists( dirname( __FILE__ ) . '/inc/comment-password-form.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/comment-password-form.php' );
+// Bootstrap NavWalker
+if( file_exists( dirname( __FILE__ ) . '/lib/bootstrap-navwalker.php' ) ) {
+	require_once( dirname( __FILE__ ) . '/lib/bootstrap-navwalker.php' );
 }
 
-// Skip Link Focus Fix
-if( file_exists( dirname( __FILE__ ) . '/inc/skip-link-focus-fix.php' ) ) {
-	require_once( dirname( __FILE__ ) . '/inc/skip-link-focus-fix.php' );
+// TGM Plugin Activation
+if( file_exists( dirname( __FILE__ ) . '/lib/tgm-activation.php' ) ) {
+	require_once( dirname( __FILE__ ) . '/lib/tgm-activation.php' );
+}
+
+// TGM Plugin Customization
+if( file_exists( dirname(__FILE__) . '/inc/tgm-customization.php' ) ) {
+	require_once(dirname(__FILE__) . '/inc/tgm-customization.php' );
 }

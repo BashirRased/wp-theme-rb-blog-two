@@ -1,36 +1,32 @@
 <?php
 /**
- * Template part for displaying a message that posts cannot be found
+ * Template part for displaying no content
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
-
 ?>
 
-<section class="no-results not-found">
+<section class="no-results text-center">
 	<header class="page-header">
 		<?php if ( is_search() ) : ?>
 
-			<h2 class="page-title">
+			<h1 class="page-title">
 				<?php
 				printf(
 					/* translators: %s: Search term. */
 					esc_html__( 'Results for "%s"', 'rb-blog-two' ),
-					'<span class="page-description search-term">' . esc_html( get_search_query() ) . '</span>'
+					'<span class="page-title-span">' . esc_html( get_search_query() ) . '</span>'
 				);
 				?>
-			</h2>
+			</h1>
 
 		<?php else : ?>
 
-			<h1 class="page-title">
-				<?php esc_html_e( 'Nothing here', 'rb-blog-two' ); ?>
-			</h1>
+			<h1 class="page-title"><?php esc_html_e( 'Nothing here', 'rb-blog-two' ); ?></h1>
 
 		<?php endif; ?>
 	</header><!-- .page-header -->

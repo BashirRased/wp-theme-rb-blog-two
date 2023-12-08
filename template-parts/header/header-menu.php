@@ -1,28 +1,27 @@
 <?php
 /**
- * Displays breadcrumbs.
+ * The header menu template file loaded under header.php
+ * 
+ * @link https://developer.wordpress.org/themes/functionality/navigation-menus/
  *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
 ?>
 
+<!--===================================
+===== Header Menu Area Start Here =====
+====================================-->
 <div class="header-menu-area">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <?php
-                if ( has_nav_menu( 'header-menu' ) ) {
-                    wp_nav_menu(array(
-                        'theme_location'  => 'header-menu',
-                        'container'       => 'nav',
-                        'container_class' => 'header-menu'
-                    ));
-                }
-                ?>
+            <div class="col-lg-12">
+                <?php do_action( 'rb_blog_two_header_menu' ); ?>
             </div>
-        </div>
-    </div>
+        </div><!-- .row -->
+    </div><!-- .container -->
 </div>
+<!--=================================
+===== Header Menu Area End Here =====
+===================================-->

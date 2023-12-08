@@ -4,48 +4,52 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package RB Free Theme
- * @subpackage RB Blog Two
- * @version RB Blog Two 1.0.0
- * @since RB Blog Two 1.0.0
+ * @package RB Blog Two
+ * @version RB Blog Two 1.0.1
+ * @since RB Blog Two 1.0.1
  */
 
 get_header();
-
-if ( is_active_sidebar( 'sidebar-right' ) ) {
-	$col_class = 'col-md-8';
-} else {
-	$col_class = 'col-md-12';
-}
 ?>
 
-<div class="container">
-	<div class="row">
-		<div class="<?php echo esc_attr( $col_class ); ?>">
+<!--====================================
+===== Site Content Area Start Here =====
+=====================================-->
+<div id="page-content" class="site-content">        
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-8">
+                <div class="content-area">
 
-			<header class="page-header">
-				<h2 class="page-title">
-					<?php esc_html_e( 'Nothing here', 'rb-blog-two' ); ?>
-				</h2>
-			</header><!-- .page-header -->
+                    <main id="primary" class="site-main">
+                        <section class="error-page text-center">
 
-			<div class="error-404 not-found">
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'rb-blog-two' ); ?></p>
-					<?php get_search_form(); ?>
-				</div><!-- .page-content -->
-			</div><!-- .error-404 -->
-			
-		</div><!-- $col_class -->
+                            <header class="page-header">
+                                <h1 class="page-header-title">
+                                    <?php esc_html_e('404', 'rb-blog-two'); ?>
+                                </h1>
+                                <h4 class="header-subtitle">
+                                    <?php esc_html_e('Page Not Found', 'rb-blog-two'); ?>
+                                </h4>
+                            </header><!-- .page-header -->
 
-		<?php
-			if( is_active_sidebar( 'sidebar-right' ) ){
-				get_sidebar();
-			}
-		?>
-		
-	</div><!-- .row -->
-</div><!-- .container -->
+                            <div class="error-content">
+                                <p>
+                                    <?php esc_html_e('Whoops, this is embarassing. Looks like the page you were looking for was not found.', 'rb-blog-two'); ?>
+                                </p>
+                                <a class="theme-btn" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                                    <?php esc_html_e('Back To Home', 'rb-blog-two'); ?>
+                                </a>
+                            </div><!-- .error-content -->
+                        
+                        </section><!-- .error-page -->
+                    </main><!-- .site-main -->
 
-<?php
+                    <?php do_action( "rb_blog_two_pagination" ); ?>
+                    
+                </div><!-- .content-area -->
+            </div>
+
+            <?php get_sidebar();            
 get_footer();
