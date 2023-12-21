@@ -7,6 +7,12 @@
  * @package rb-blog-two
  */
 
+$post_meta_list_blog ="";
+$video_post = "";
+$video_file = "";
+$video_oembed = "";
+
+$post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_single' );
 $video_post = get_field( 'rbth_post_video_file_format' );
 $video_file = get_field( 'rbth_post_video_file' );
 $video_oembed = get_field( 'rbth_post_video_iframe' );
@@ -28,9 +34,6 @@ $video_oembed = get_field( 'rbth_post_video_iframe' );
 
                     <?php
                         if ( true == get_theme_mod( 'rbth_post_meta_single' ) ) :
-
-                        // Post Meta List
-                        $post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_single' );
                     ?>                    
                     <div class="entry-meta">
                     <?php

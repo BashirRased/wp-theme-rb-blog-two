@@ -12,6 +12,13 @@
 <footer class="site-footer">
     <div class="container">
         <div class="row">
+        <?php if ( true == get_theme_mod( 'rbth_copyright_switch' ) ) : ?>
+            <div class="col-lg-6">
+                <p>
+                    <?php echo wp_kses_post ( get_theme_mod( 'rbth_copyright_text' ), 'rb-blog-two' ); ?>
+                </p>
+            </div>
+        <?php else : ?>
             <div class="col-lg-6">
                 <?php
                     $fromYear = (int)esc_html('2022','rb-blog-two');
@@ -41,6 +48,15 @@
                     );
                 ?>
             </div>
+        <?php endif; ?>
+
+        <?php if ( true == get_theme_mod( 'rbth_poweredby_switch' ) ) : ?>
+            <div class="col-lg-6">
+                <p>
+                    <?php echo wp_kses_post ( get_theme_mod( 'rbth_poweredby_text' ), 'rb-blog-two' ); ?>
+                </p>            
+            </div>
+        <?php else : ?>
             <div class="col-lg-6">
                 <?php
                     printf(
@@ -60,6 +76,7 @@
                     );
                 ?>
             </div>
+        <?php endif; ?>
         </div><!-- .row -->
     </div><!-- .container -->
 </footer>

@@ -6,20 +6,21 @@
  */
 
 get_header();
-
-$sidebar = get_theme_mod( 'rbth_sidebar_blog' );
-$sidebar_class = "";
+$sidebar ="";
+$main_class = "";
 $sidebar_display = "";
+$sidebar = get_theme_mod( 'rbth_sidebar_blog' );
+
 if( $sidebar == "left-sidebar" ) {
-    $sidebar_class = "col-lg-8";
+    $main_class = "col-lg-8";
     $sidebar_display = "left";
 }
 elseif( $sidebar == "right-sidebar" ) {
-    $sidebar_class = "col-lg-8";
+    $main_class = "col-lg-8";
     $sidebar_display = "right";
 }
 else {
-    $sidebar_class = "col-lg-12";
+    $main_class = "col-lg-12";
 }
 ?>
 
@@ -36,7 +37,7 @@ else {
                 }
             ?>
             
-            <div class="<?php echo esc_attr( $sidebar_class ); ?>">
+            <div class="<?php echo esc_attr( $main_class ); ?>">
                 <div class="content-area">
 
                     <main id="primary" class="site-main">

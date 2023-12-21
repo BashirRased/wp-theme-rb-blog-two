@@ -7,6 +7,9 @@
  * @package rb-blog-two
  */
 
+$post_meta_list_blog = "";
+$post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_blog' );
+
 $quote_text = "";
 $quote_text = get_field( 'rbth_post_quote_text' );
 
@@ -33,9 +36,6 @@ $quote_author_url = get_field( 'rbth_post_quote_author_url' );
 
                     <?php
                         if ( true == get_theme_mod( 'rbth_post_meta_blog' ) ) {
-
-                        // Post Meta List
-                        $post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_blog' );
                         if ( $post_meta_list_blog ) {
                     ?>
                     <div class="entry-meta">

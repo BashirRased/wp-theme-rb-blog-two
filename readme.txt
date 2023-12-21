@@ -3,7 +3,7 @@ Contributors: bashirrased
 Requires at least: 6.4
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Author URI: https://bashirrased.com/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -18,7 +18,7 @@ RB Blog Two is a responsive WordPress personal blog theme for WordPress. It is a
 
 == Resources ==
 
-= Font Awesome Free 6.4.2 =
+= Font Awesome Free 6.5.1 =
   - Author: @fontawesome
   - License: (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
   - License URL: https://fontawesome.com/license/free
@@ -91,6 +91,11 @@ RB Blog Two WordPress Theme, Copyright 2022-2023 Bashir Rased.
 RB Blog Two is distributed under the terms of the GNU GPL.
 
 == Changelog ==
+= 1.0.4 - December 20, 2023 =
+* 4th Updated.
+* rtl support
+* variable feter error slove
+
 = 1.0.3 - November 30, 2023 =
 * 3rd Updated.
 * css & js latest version add

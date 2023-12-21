@@ -30,13 +30,13 @@
         display: none;
     }
 
-    .submenu li {
-        border-bottom: none;
+    .submenu,
+    .submenu .submenu {
+        position: static;
     }
 
-    .submenu li:hover > .submenu, .submenu li:focus-within > .submenu {
-        left: 0;
-        top: 100%;
+    .submenu li {
+        border-bottom: none;
     }
 
     .submenu .submenu li {

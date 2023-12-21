@@ -7,9 +7,12 @@
  * @package rb-blog-two
  */
 
+$header_menu_fixed_kirki = "";
+$header_menu_fixed_acf = "";
+$menu_fixed_class = "";
+
 $header_menu_fixed_kirki = get_theme_mod ( 'rbth_menu_fixed' );
 $header_menu_fixed_acf = get_field( 'rbth_memu_fixed_disable' );
-$menu_fixed_class = "";
 if ( $header_menu_fixed_kirki ) {
     if ( $header_menu_fixed_acf ) {
 

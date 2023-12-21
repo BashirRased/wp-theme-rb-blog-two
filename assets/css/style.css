@@ -148,6 +148,10 @@ Table of CSS Content Start Here
     margin-right: 20px;
 }
 
+.custom-logo-link {
+    display: block;
+}
+
 .header-logo img {
     width: auto;
     height: 80px;
@@ -359,7 +363,7 @@ Table of CSS Content Start Here
     background-color: transparent;
 }
 
-.breadcrumbs-title {
+h2.breadcrumbs-title {
     text-align: center;
     color: var(--white-color);
     text-transform: capitalize;
@@ -786,6 +790,7 @@ Table of CSS Content Start Here
 ===========================================*/
 .footer-widget-area {
     padding: 70px 0;
+    background-color: #ddd;
 }
 
 .footer-widget-list {
@@ -821,7 +826,6 @@ Table of CSS Content Start Here
 ===== 12. Footer CSS Area Start Here =====
 ========================================*/
 .site-footer {
-    margin-top: 20px;
     background-color: var(--primary-color);
     color: var(--white-color);
     min-height: 50px;

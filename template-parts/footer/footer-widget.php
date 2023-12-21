@@ -6,6 +6,7 @@
  */
 
 $count = 0;
+$footer_widget_class = "footer-widget-col-1";
 if ( is_active_sidebar( 'footer-1' ) ) {
     $count++;
     $footer_widget_class = "footer-widget-col-" . $count;

@@ -5,6 +5,9 @@
  * @package rb-blog-two
  */
 
+$site_title    = "";
+$site_tagline  = "";
+
 $site_title    = get_bloginfo( 'name' );
 $site_tagline  = get_bloginfo( 'description', 'display' );
 

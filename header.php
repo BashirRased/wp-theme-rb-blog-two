@@ -8,7 +8,6 @@
  *
  * @package rb-blog-two
  */
-
 ?>
 <!DOCTYPE html>
 <html class="no-js" <?php language_attributes(); ?>>
@@ -30,6 +29,7 @@
 
 <?php
     // Preloader Template
+    $preloader = "";
     $preloader = get_field( 'rbth_preloader_acf' );
     if ( $preloader == 'on' ) {
         get_template_part( 'template-parts/header/preloader' );
@@ -46,6 +46,7 @@
 <header class="site-header">
     <?php
         // Header Top Template
+        $header_top = "";
         $header_top = get_field( 'rbth_header_top_acf' );
         if ( $header_top == 'on' ) {
             get_template_part( 'template-parts/header/header-top' );
@@ -62,6 +63,7 @@
         get_template_part( 'template-parts/header/header-menu' );
 
         // Breadcrumbs Template
+        $breadcrumb = "";
         $breadcrumb = get_field( 'rbth_breadcrumb_acf' );
         if ( $breadcrumb == 'on' ) {
             get_template_part( 'template-parts/header/breadcrumbs' );

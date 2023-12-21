@@ -68,10 +68,13 @@ add_action( 'wp_enqueue_scripts', 'rb_blog_two_fontawesome_css' );
 /************************
 ***** 03. Bootstrap *****
 ************************/
-function rb_blog_two_bootstrap_assets() {    
-    // Bootstrap CSS
-	wp_enqueue_style( 'bootstrap', BOOTSTRAP_ASSETS . 'bootstrap.css', '', '5.3.2', 'all' );
-    wp_enqueue_style( 'bootstrap', BOOTSTRAP_ASSETS . 'bootstrap.css', '', '5.3.2', 'all' );
+function rb_blog_two_bootstrap_assets() {
+	// Bootstrap CSS
+    if ( is_rtl() ) {
+        wp_enqueue_style( 'bootstrap-rtl', BOOTSTRAP_ASSETS . 'bootstrap.rtl.css', '', '5.3.2', 'all' );
+        } else {        
+        wp_enqueue_style( 'bootstrap', BOOTSTRAP_ASSETS . 'bootstrap.css', '', '5.3.2', 'all' );
+    }
     
     // Bootstrap JS
     wp_enqueue_script( 'bootstrap', BOOTSTRAP_ASSETS . 'bootstrap.js', array( 'jquery', 'popper' ), '5.3.2', true);
