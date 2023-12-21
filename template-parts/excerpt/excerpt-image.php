@@ -11,7 +11,9 @@ $post_meta_list_blog = "";
 $post_meta_list_blog = get_theme_mod( 'rbth_post_meta_list_blog' );
 
 $img_file = "";
-$img_file = get_field( 'rbth_post_img' );
+if ( function_exists('get_field') && get_field('rbth_post_img') ) {
+    $img_file = get_field( 'rbth_post_img' );
+}
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post-item' ); ?>>

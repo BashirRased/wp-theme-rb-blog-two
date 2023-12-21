@@ -30,7 +30,9 @@
 <?php
     // Preloader Template
     $preloader = "";
-    $preloader = get_field( 'rbth_preloader_acf' );
+    if ( function_exists('get_field') && get_field('rbth_preloader_acf') ) {
+        $preloader = get_field( 'rbth_preloader_acf' );
+    }
     if ( $preloader == 'on' ) {
         get_template_part( 'template-parts/header/preloader' );
     } else {
@@ -47,7 +49,9 @@
     <?php
         // Header Top Template
         $header_top = "";
-        $header_top = get_field( 'rbth_header_top_acf' );
+        if ( function_exists('get_field') && get_field('rbth_header_top_acf') ) {
+            $header_top = get_field( 'rbth_header_top_acf' );
+        }        
         if ( $header_top == 'on' ) {
             get_template_part( 'template-parts/header/header-top' );
         } else {
@@ -64,14 +68,16 @@
 
         // Breadcrumbs Template
         $breadcrumb = "";
-        $breadcrumb = get_field( 'rbth_breadcrumb_acf' );
+        if ( function_exists('get_field') && get_field('rbth_breadcrumb_acf') ) {
+            $breadcrumb = get_field( 'rbth_breadcrumb_acf' );
+        }
         if ( $breadcrumb == 'on' ) {
             get_template_part( 'template-parts/header/breadcrumbs' );
         } else {
             if ( true == get_theme_mod ( 'rbth_breadcrumb_switch' ) ) {
                 get_template_part( 'template-parts/header/breadcrumbs' );
             }
-        } 
+        }
     ?>        
 </header>
 <!--============================
