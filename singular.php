@@ -11,7 +11,10 @@ $sidebar_display = "";
 $sidebar_acf = "";
 $sidebar = "";
 
-$sidebar_acf = get_field( 'rbth_choose_sidebar' );
+if ( function_exists('get_field') && get_field('rbth_choose_sidebar') ) {
+    $sidebar_acf = get_field( 'rbth_choose_sidebar' );
+}
+
 $sidebar = get_theme_mod( 'rbth_sidebar_single' );
 if ( $sidebar_acf == 'left-sidebar' ) {
     $main_class = "col-lg-8";

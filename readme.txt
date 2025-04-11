@@ -3,7 +3,7 @@ Contributors: bashirrased
 Requires at least: 6.4
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 Author URI: https://bashirrased.com/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -91,6 +91,10 @@ RB Blog Two WordPress Theme, Copyright 2022-2023 Bashir Rased.
 RB Blog Two is distributed under the terms of the GNU GPL.
 
 == Changelog ==
+= 1.0.5 - December 21, 2023 =
+* 5th Updated.
+* variable feter error slove again
+
 = 1.0.4 - December 20, 2023 =
 * 4th Updated.
 * rtl support
