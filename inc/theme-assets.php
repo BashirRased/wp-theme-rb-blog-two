@@ -1,85 +1,147 @@
 <?php
 /**
- * Loading all css & js files.
+ * Theme all assets loading.
  *
- * @link https://developer.wordpress.org/themes/basics/including-css-javascript/
- * 
- * The template loading under functions.php
- * 
- * @package rb-blog-two
+ * @package RB_Themes
+ * @subpackage RB_Blog_Two
  */
 
- /*==================================
-Table of Theme Assets List Start Here
-=====================================
-	01. Prefix with file directory
-	02. Google Fonts
-	03. Custom Assets
-	04. WordPress Assets
-===================================
-Table of Theme Assets List End Here
-=================================*/
- 
-/*****************************************
-***** 01. Prefix with file directory *****
-*****************************************/
-define( 'RB_Blog_Two_URL', get_template_directory_uri() );
-define( 'RB_Blog_Two_CSS',RB_Blog_Two_URL.'/assets/css/' );
-define( 'RB_Blog_Two_JS',RB_Blog_Two_URL.'/assets/js/' );
-
-/***************************
-***** 02. Google Fonts *****
-***************************/
-add_editor_style( array(rb_blog_two_google_fonts() ) );
 /**
- * Register Google fonts.
+ * =================================
+ * ----- Table of Theme Assets -----
+ * =================================
+ * +++++ 01. Prefix with file directory
+ * +++++ 02. Remove Elementor FontAwesome
+ * +++++ 03. Google Fonts
+ * +++++ 04. WordPress Assets
+ * +++++ 05. Custom Assets
  */
-function rb_blog_two_google_fonts() {
-	$fonts_url = '';
-	$font_families = array();
-	$font_families[] = 'Josefin Sans:300';
-	$font_families[] = 'Josefin Sans:600';
-	$query_args = array(
-		'family' => urlencode( implode( '|', $font_families ) )
-	);
-	$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-	return esc_url_raw( $fonts_url );
-}
 
-function rb_blog_two_google_font_css(){
-    // Google Font
-	wp_enqueue_style( 'rb-blog-two-google-font', rb_blog_two_google_fonts(), '', wp_get_theme()->get('Version'), 'all' );
-}
-add_action( 'wp_enqueue_scripts', 'rb_blog_two_google_font_css' );
+// 01. Prefix with file directory.
+define( 'RB_BLOG_TWO_URL', get_template_directory_uri() );
+define( 'RB_BLOG_TWO_CSS', RB_BLOG_TWO_URL . '/assets/css/' );
+define( 'RB_BLOG_TWO_JS', RB_BLOG_TWO_URL . '/assets/js/' );
 
-/****************************
-***** 03. Custom Assets *****
-****************************/
-function rb_blog_two_theme_custom_assets(){
-    // Default CSS
-    wp_enqueue_style( 'rb-blog-two-default', RB_Blog_Two_CSS . 'default.css','', time(), 'all' );
+// 02. Remove Elementor FontAwesome.
+if ( ! function_exists( 'rb_blog_two_remove_elementor_font_awesome' ) ) {
+	/**
+	 * Remove Elementor default Font Awesome.
+	 */
+	function rb_blog_two_remove_elementor_font_awesome() {
 
-    // Theme Style CSS
-    wp_enqueue_style( 'rb-blog-two-style', RB_Blog_Two_CSS . 'style.css', '', time(), 'all' );
+		// Remove Elementor registered FA styles.
+		wp_deregister_style( 'elementor-icons-fa-solid' );
+		wp_deregister_style( 'elementor-icons-fa-regular' );
+		wp_deregister_style( 'elementor-icons-fa-brands' );
+		wp_deregister_style( 'elementor-icons-fa' );
 
-    // Responsive CSS
-    wp_enqueue_style( 'rb-blog-two-responsive', RB_Blog_Two_CSS . 'responsive.css', '', time(), 'all' );	
-
-    // Theme Custom JS
-    wp_enqueue_script( 'rb-blog-two-custom', RB_Blog_Two_JS . 'custom.js',array( 'jquery' ), time(), true );
-}
-add_action('wp_enqueue_scripts','rb_blog_two_theme_custom_assets');
-
-/*******************************
-***** 04. WordPress Assets *****
-*******************************/
-function rb_blog_two_wp_assets() {
-    // WP Required Style
-	wp_enqueue_style('rb-blog-two-wp-style', get_stylesheet_uri(), '', time(), 'all');
-
-    // Threaded comment reply styles.
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' )) {
-		wp_enqueue_script( 'comment-reply' );
+		// Sometimes Elementor Pro uses this handle.
+		wp_deregister_style( 'font-awesome' );
 	}
+	add_action( 'elementor/frontend/after_register_styles', 'rb_blog_two_remove_elementor_font_awesome', 5 );
 }
-add_action( 'wp_enqueue_scripts', 'rb_blog_two_wp_assets' );
+
+// 03. Google Fonts.
+if ( ! function_exists( 'rb_blog_two_google_fonts' ) ) {
+	/**
+	 * Enqueue Google Fonts dynamically from an array.
+	 */
+	function rb_blog_two_google_fonts() {
+		$google_font_version = null;
+
+		$google_font_path_start = 'https://fonts.googleapis.com/css2?';
+		$google_font_path_end   = '&display=swap&subset=latin,latin-ext,cyrillic,cyrillic-ext,vietnamese';
+
+		$google_font_family_path           = 'family=';
+		$google_font_family_with_italic    = ':ital,wght@';
+		$google_font_family_without_italic = ':wght@';
+
+		$google_font_family_1_name        = 'Josefin+Sans';
+		$google_font_family_1_weight_list = array( '300', '600' );
+		$google_font_family_1_weight      = implode( ';', $google_font_family_1_weight_list );
+		$google_font_family_1             = $google_font_family_path . $google_font_family_1_name . $google_font_family_without_italic . $google_font_family_1_weight;
+
+		$google_font_families = array( $google_font_family_1 );
+		$google_font_family   = implode( '&', $google_font_families );
+
+		$google_font_path = $google_font_path_start . $google_font_family . $google_font_path_end;
+
+		// Nunito, Figtree, Caveat with full weights and subsets.
+		wp_enqueue_style(
+			'rb-blog-two-google-fonts',
+			$google_font_path,
+			array(),
+			$google_font_version // Using time() is okay for development, but remove in production for caching.
+		);
+	}
+	add_action( 'wp_enqueue_scripts', 'rb_blog_two_google_fonts' );
+}
+
+// 04. WordPress Assets.
+if ( ! function_exists( 'rb_blog_two_wp_assets' ) ) {
+	/**
+	 * Enqueue WordPress core assets.
+	 */
+	function rb_blog_two_wp_assets() {
+
+		// WP Required Style.
+		wp_enqueue_style(
+			'rb-blog-two-wp-style',
+			get_stylesheet_uri(),
+			array(),
+			wp_get_theme()->get( 'Version' ),
+			'all'
+		);
+
+		// Threaded comment reply script.
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
+	}
+	add_action( 'wp_enqueue_scripts', 'rb_blog_two_wp_assets' );
+}
+
+// 05. Custom Assets.
+if ( ! function_exists( 'rb_blog_two_theme_custom_assets' ) ) {
+	/**
+	 * Enqueue theme custom CSS & JS.
+	 */
+	function rb_blog_two_theme_custom_assets() {
+		// Theme Style CSS.
+		wp_enqueue_style(
+			'rb-blog-two-default',
+			RB_BLOG_TWO_CSS . 'default.css',
+			array(),
+			time(),
+			'all'
+		);
+
+		// Theme Style CSS.
+		wp_enqueue_style(
+			'rb-blog-two-style',
+			RB_BLOG_TWO_CSS . 'style.css',
+			array(),
+			time(),
+			'all'
+		);
+
+		// Responsive CSS.
+		wp_enqueue_style(
+			'rb-blog-two-responsive',
+			RB_BLOG_TWO_CSS . 'responsive.css',
+			array(),
+			time(),
+			'all'
+		);
+
+		// Theme Custom JS.
+		wp_enqueue_script(
+			'rb-blog-two-custom',
+			RB_BLOG_TWO_JS . 'custom.js',
+			array( 'jquery' ),
+			time(),
+			true
+		);
+	}
+	add_action( 'wp_enqueue_scripts', 'rb_blog_two_theme_custom_assets' );
+}
